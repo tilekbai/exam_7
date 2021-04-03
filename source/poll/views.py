@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, reverse
 from poll.base_views import FormView as CustomFormView
 
 from poll.models import Poll, Choice
-from poll.forms import PollForm, SearchForm
+from poll.forms import PollForm, SearchForm, ChoiceForm
 # Create your views here.
 
 
@@ -81,3 +81,39 @@ class PollDeleteView(DeleteView):
     model = Poll
     context_object_name = 'poll'
     success_url = reverse_lazy('poll-list')
+
+
+class PollChoiceCreateView(CreateView):
+    model = Choice
+    template_name = 'choice/choice_create.html'
+    form_class = ChoiceForm
+
+    def form_valid(self, form):
+        poll = get_object_or_404(Poll, pk=self.kwargs.get('pk'))
+        choice = form.save(commit=False)
+        choice.poll = poll
+        choice.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse(
+            'poll-view',
+            kwargs={'pk': self.kwargs.get('pk')}
+        )
+
+    def form_valid(self, form):
+        poll = get_object_or_404(Poll, id=self.kwargs.get('pk'))
+        form.instance.poll = poll
+        return super().form_valid(form)
+
+
+class ChoiceUpdateView(UpdateView):
+    model = Choice
+    template_name = 'choice/choice_update.html'
+    form_class = ChoiceForm
+    context_object_name = 'choice'
+
+    def get_success_url(self):
+        return reverse('poll-view', kwargs={'pk': self.object.pk})
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Choice, pk=pk)
