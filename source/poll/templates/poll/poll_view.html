@@ -3,6 +3,7 @@
 <body>
     {% block menu %}
     <li><a href="{% url 'choice-create' poll.pk %}">Написать ответ</a></li>
+    <li><a href="{% url 'questionaire' %}">Пройти опрос</a></li>
     {% endblock %}
     {% block page_header %}Вопрос {{poll.id}}{% endblock page_header %}
     {% block content %}
