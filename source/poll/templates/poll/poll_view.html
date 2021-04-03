@@ -5,5 +5,16 @@
     {% block content %}
     <p>Вопрос: {{ poll.question }}</p>
     <p>Время создания: {{ poll.created_at }}</p>
+    
+    <h3>Ответы:</h3>
+    <div class="poll_list">
+        {% for choice in poll.Choice.all %}
+            <div class="choice_of_poll">
+                <p>Ответ: <b>{{ choice.text }}</b>.</p>
+            </div>
+        {% empty %}
+            <p>Нет ответов.</p>
+        {% endfor %}
+    </div>
     {% endblock content %}
 </body>
