@@ -1,0 +1,10 @@
+{% extends "poll/base.html" %}
+{% block title %}Редактирование ответа{% endblock title %}
+<body>
+    {% block page_header %}<h1>Редактирование ответа</h1>{% endblock page_header %}
+    {% block content %}<form action="{% url 'choice-update' choice.id %}" method="post">
+        {% include "partial/form.html" with button_text="Редактировать ответ" %}
+    {% endblock content %}
+    </form>
+</body>
+</html>

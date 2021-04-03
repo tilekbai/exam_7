@@ -1,6 +1,9 @@
 {% extends "poll/base.html" %}
 {% block title %}Вопрос {{poll.id}}{% endblock title %}
 <body>
+    {% block menu %}
+    <li><a href="{% url 'choice-create' poll.pk %}">Написать ответ</a></li>
+    {% endblock %}
     {% block page_header %}Вопрос {{poll.id}}{% endblock page_header %}
     {% block content %}
     <p>Вопрос: {{ poll.question }}</p>
@@ -10,7 +13,7 @@
     <div class="poll_list">
         {% for choice in poll.Choice.all %}
             <div class="choice_of_poll">
-                <p>Ответ: <b>{{ choice.text }}</b>.</p>
+                <p>Ответ: <b>{{ choice.text }}</b>. <a href="{% url 'choice-update' choice.id %}">Изменить</a></p>
             </div>
         {% empty %}
             <p>Нет ответов.</p>
