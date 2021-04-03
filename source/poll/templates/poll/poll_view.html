@@ -13,7 +13,7 @@
     <div class="poll_list">
         {% for choice in poll.Choice.all %}
             <div class="choice_of_poll">
-                <p>Ответ: <b>{{ choice.text }}</b>. <a href="{% url 'choice-update' choice.id %}">Изменить</a></p>
+                <p>Ответ: <b>{{ choice.text }}</b>. <a href="{% url 'choice-update' choice.id %}">Изменить</a> <a href="{% url 'choice-delete' choice.id %}">Удалить</a></p>
             </div>
         {% empty %}
             <p>Нет ответов.</p>
