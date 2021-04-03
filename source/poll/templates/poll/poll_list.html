@@ -1,0 +1,16 @@
+{% extends "poll/base.html" %}
+{% block title %}Все вопросы{% endblock title %}
+<body>        
+    <div>
+        {% block content %}
+        {% include "partial\search_form.html" %}
+        <p>Список вопросов</p>
+        {% for poll in polls %} 
+                <p>Название: <b>{{ poll.question }}</b></p>
+        {% endfor %}
+        {% include "partial/paginate.html" %}
+        {% endblock content %}
+    </div>
+    
+</body>
+</html>
