@@ -107,7 +107,7 @@ class ChoiceUpdateView(UpdateView):
     context_object_name = 'choice'
 
     def get_success_url(self):
-        return reverse('poll-view', kwargs={'pk': self.object.pk})
+        return reverse('poll-list')
         pk = self.kwargs.get('pk')
         return get_object_or_404(Choice, pk=pk)
 
