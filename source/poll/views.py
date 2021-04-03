@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView, CreateView
+from django.views.generic import ListView, TemplateView, CreateView, UpdateView
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.shortcuts import get_object_or_404, reverse
@@ -60,6 +60,16 @@ class PollCreateView(CreateView):
     template_name = "poll/poll_create.html"
     model = Poll
     form_class = PollForm
+
+    def get_success_url(self):
+        return reverse('poll-view', kwargs={'pk': self.object.pk})
+
+
+class PollUpdateView(UpdateView):
+    model = Poll
+    template_name = 'poll/poll_update.html'
+    form_class = PollForm
+    context_object_name = 'poll'
 
     def get_success_url(self):
         return reverse('poll-view', kwargs={'pk': self.object.pk})
