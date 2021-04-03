@@ -88,13 +88,6 @@ class PollChoiceCreateView(CreateView):
     template_name = 'choice/choice_create.html'
     form_class = ChoiceForm
 
-    def form_valid(self, form):
-        poll = get_object_or_404(Poll, pk=self.kwargs.get('pk'))
-        choice = form.save(commit=False)
-        choice.poll = poll
-        choice.save()
-        return super().form_valid(form)
-
     def get_success_url(self):
         return reverse(
             'poll-view',
@@ -103,7 +96,7 @@ class PollChoiceCreateView(CreateView):
 
     def form_valid(self, form):
         poll = get_object_or_404(Poll, id=self.kwargs.get('pk'))
-        form.instance.poll = poll
+        form.instance.poll_id = poll
         return super().form_valid(form)
 
 
