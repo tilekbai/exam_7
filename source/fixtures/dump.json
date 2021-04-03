@@ -1,0 +1,68 @@
+[
+{
+  "model": "poll.poll",
+  "pk": 1,
+  "fields": {
+    "question": "How old are you?",
+    "created_at": "2021-04-03T05:48:25.209Z"
+  }
+},
+{
+  "model": "poll.poll",
+  "pk": 2,
+  "fields": {
+    "question": "Your name",
+    "created_at": "2021-04-03T05:48:40.665Z"
+  }
+},
+{
+  "model": "poll.poll",
+  "pk": 3,
+  "fields": {
+    "question": "Favourite color",
+    "created_at": "2021-04-03T05:48:56.852Z"
+  }
+},
+{
+  "model": "poll.choice",
+  "pk": 1,
+  "fields": {
+    "text": "Kiki",
+    "poll_id": 2
+  }
+},
+{
+  "model": "poll.choice",
+  "pk": 2,
+  "fields": {
+    "text": "18",
+    "poll_id": 1
+  }
+},
+{
+  "model": "poll.choice",
+  "pk": 3,
+  "fields": {
+    "text": "Green",
+    "poll_id": 3
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$216000$sdZuFrSUiFm7$0GpIxM1Ro0wCV613oYYMvzDphNs96yO8QmWf56V1AzA=",
+    "last_login": "2021-04-03T05:46:22.606Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-04-03T05:45:52.380Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
