@@ -9,7 +9,7 @@
         {% include "partial\search_form.html" %}
         <p>Список вопросов</p>
         {% for poll in polls %} 
-                <p>Название: <b>{{ poll.question }}</b> <a href="{% url 'poll-view' poll.id %}">Посмотреть вопрос</a> <a href="{% url 'poll-update' poll.id %}">Редактировать</a></p>
+                <p>Название: <b>{{ poll.question }}</b> <a href="{% url 'poll-view' poll.id %}">Посмотреть вопрос</a> <a href="{% url 'poll-update' poll.id %}">Редактировать</a> <a href="{% url 'poll-delete' poll.id %}">Удалить</a></p>
         {% endfor %}
         {% include "partial/paginate.html" %}
         {% endblock content %}

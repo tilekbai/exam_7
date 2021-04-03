@@ -1,0 +1,11 @@
+{% extends "poll/base.html" %}
+{% block title %}Удаление вопроса{% endblock title %}
+<body>
+    {% block page_header %}Удаление вопроса{% endblock page_header %}
+    {% block content %}
+    <form action="{% url 'poll-delete' poll.id %}", method="POST">
+        {% include 'partial/poll_form.html' with button_text="Да, я хочу удалить вопрос" %}
+        <a href="{% url 'poll-view' poll.id %}">Отмена</a>
+    </form>
+    {% endblock content %}     
+</body>
