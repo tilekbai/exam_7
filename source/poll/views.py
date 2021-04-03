@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, CreateView
 from django.db.models import Q
 from django.utils.http import urlencode
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
+from poll.base_views import FormView as CustomFormView
 
 from poll.models import Poll, Choice
 from poll.forms import PollForm, SearchForm
@@ -54,3 +55,11 @@ class PollView(TemplateView):
         kwargs ["poll"] = get_object_or_404(Poll, id=kwargs.get("pk"))
         return super().get_context_data(**kwargs)
 
+
+class PollCreateView(CreateView):
+    template_name = "poll/poll_create.html"
+    model = Poll
+    form_class = PollForm
+
+    def get_success_url(self):
+        return reverse('poll-view', kwargs={'pk': self.object.pk})
