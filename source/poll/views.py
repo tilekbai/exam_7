@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.shortcuts import get_object_or_404
 
 from poll.models import Poll, Choice
 from poll.forms import PollForm, SearchForm
@@ -45,3 +46,11 @@ class MainView(ListView):
 
         return context
     
+
+class PollView(TemplateView):
+    template_name = "poll/poll_view.html"
+
+    def get_context_data(self, **kwargs):
+        kwargs ["poll"] = get_object_or_404(Poll, id=kwargs.get("pk"))
+        return super().get_context_data(**kwargs)
+
