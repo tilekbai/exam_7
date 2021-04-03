@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView, CreateView, UpdateView
+from django.views.generic import ListView, TemplateView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.utils.http import urlencode
+from django.urls import reverse_lazy
 from django.shortcuts import get_object_or_404, reverse
 from poll.base_views import FormView as CustomFormView
 
@@ -73,3 +74,10 @@ class PollUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('poll-view', kwargs={'pk': self.object.pk})
+
+
+class PollDeleteView(DeleteView):
+    template_name = 'poll/poll_delete.html'
+    model = Poll
+    context_object_name = 'poll'
+    success_url = reverse_lazy('poll-list')
