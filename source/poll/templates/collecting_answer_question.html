@@ -1,0 +1,23 @@
+{% extends "poll/base.html" %}
+{% block title %}Сбор ответов на вопросы{% endblock title %}
+<body> 
+    <div>
+        {% block content %}
+        <p>Список вопросов</p>
+        {% for poll in polls %} 
+                <p><b>{{ poll.question }}</b><br><form action="poll/poll_list.html" method="post">
+                    <p><select size="3" multiple name="hero[]">
+                        {% for choice in }
+                     <option value="Чебурашка">{ poll.question }</option>
+                     <option value="Крокодил Гена">Крокодил Гена</option>
+                     <option value="Шапокляк">Шапокляк</option>
+                     <option value="Крыса Лариса">Крыса Лариса</option>
+                    </select></p>
+                   </form></p>                  
+        {% endfor %}        
+        <p><input type="submit" value="Отправить"></p>
+        {% endblock content %}
+    </div>
+    
+</body>
+</html>
