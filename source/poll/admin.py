@@ -11,7 +11,7 @@ class PollAdmin(admin.ModelAdmin):
     fields = ["id", "question", "created_at"]
     readonly_fields = ["id", "created_at"]
 
-    admin.site.register(Poll, PollAdmin)
+admin.site.register(Poll, PollAdmin)
 
 
 class ChoiceAdmin(admin.ModelAdmin):
@@ -21,4 +21,4 @@ class ChoiceAdmin(admin.ModelAdmin):
     fields = ["id", "text", "poll_id"]
     readonly_fields = ["id"]
 
-    admin.site.register(Choice, ChoiceAdmin)
+admin.site.register(Choice, ChoiceAdmin)

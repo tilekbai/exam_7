@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ModelChoiceField
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Poll(models.Model):
 
 class Choice(models.Model):
     text = models.CharField(max_length = 400, null = True, blank = False)
-    poll_id = models.ForeignKey("poll.Poll", on_delete=models.CASCADE, related_name=Choice, null=True, blank=False)
+    poll_id = models.ForeignKey("poll.Poll", on_delete=models.CASCADE, related_name="Choice", null=True, blank=False)
 
     class Meta:
         db_table = "choices"
