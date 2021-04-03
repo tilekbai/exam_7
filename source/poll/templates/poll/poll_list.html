@@ -1,6 +1,9 @@
 {% extends "poll/base.html" %}
 {% block title %}Все вопросы{% endblock title %}
-<body>        
+<body>      
+    {% block menu %}
+    <li><a href="{% url 'poll-create' %}">Создать вопрос</a></li>
+    {% endblock %}  
     <div>
         {% block content %}
         {% include "partial\search_form.html" %}
