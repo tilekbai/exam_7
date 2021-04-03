@@ -6,7 +6,7 @@
         {% include "partial\search_form.html" %}
         <p>Список вопросов</p>
         {% for poll in polls %} 
-                <p>Название: <b>{{ poll.question }}</b></p>
+                <p>Название: <b>{{ poll.question }}</b> <a href="{% url 'poll-view' poll.id %}">Посмотреть вопрос</a></p>
         {% endfor %}
         {% include "partial/paginate.html" %}
         {% endblock content %}

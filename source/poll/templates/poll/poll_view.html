@@ -1,0 +1,9 @@
+{% extends "poll/base.html" %}
+{% block title %}Вопрос {{poll.id}}{% endblock title %}
+<body>
+    {% block page_header %}Вопрос {{poll.id}}{% endblock page_header %}
+    {% block content %}
+    <p>Вопрос: {{ poll.question }}</p>
+    <p>Время создания: {{ poll.created_at }}</p>
+    {% endblock content %}
+</body>
