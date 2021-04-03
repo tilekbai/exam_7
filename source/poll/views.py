@@ -110,3 +110,10 @@ class ChoiceUpdateView(UpdateView):
         return reverse('poll-view', kwargs={'pk': self.object.pk})
         pk = self.kwargs.get('pk')
         return get_object_or_404(Choice, pk=pk)
+
+
+class ChoiceDeleteView(DeleteView):
+    template_name = 'choice/choice_delete.html'
+    model = Choice
+    context_object_name = 'choice'
+    success_url = reverse_lazy('poll-list')
