@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, TemplateView, CreateView, UpdateView, DeleteView
+from django.http import HttpResponse
+from django.views.generic import ListView, TemplateView, CreateView, UpdateView, DeleteView, View
 from django.db.models import Q
 from django.utils.http import urlencode
 from django.urls import reverse_lazy
@@ -117,3 +118,12 @@ class ChoiceDeleteView(DeleteView):
     model = Choice
     context_object_name = 'choice'
     success_url = reverse_lazy('poll-list')
+
+
+class QuestionaireView(View):
+    def get(self, request, *args, **kwargs):
+       polls = Poll.objects.all()
+       context = {
+           'polls': polls
+       }
+       return render(request, 'collecting_answer_question.html', context)
